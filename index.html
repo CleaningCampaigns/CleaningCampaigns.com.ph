@@ -1,284 +1,408 @@
 <!DOCTYPE html>
-<html lang="tl">
+<html lang="tl-PH">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kampanya para sa Malinis at Masayang Klima 🌎</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kalinisang Klima — Sama-sama Para sa Malinis at Makulay na Kinabukasan</title>
+  <meta name="description" content="Kampanya para sa kalinisan at klima: mga proyekto, volunteer, at simpleng paraan para makibahagi." />
+  <meta name="theme-color" content="#2a7a2a">
 
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-  }
-
-  body {
-    background-color: #888;
-    color: #fff;
-    transition: background-color 1s ease, color 1s ease;
-    overflow-x: hidden;
-    position: relative;
-    min-height: 100vh;
-  }
-
-  /* Floating leaves background */
-  .leaf {
-    position: fixed;
-    bottom: -80px;
-    width: 40px;
-    height: 40px;
-    background: url('https://cdn-icons-png.flaticon.com/512/427/427735.png') no-repeat center/contain;
-    opacity: 0.25;
-    animation: floatUp linear infinite;
-    pointer-events: none;
-    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
-  }
-
-  /* Different animation durations and delays */
-  .leaf:nth-child(1) { left: 10%; animation-duration: 25s; animation-delay: 0s; }
-  .leaf:nth-child(2) { left: 30%; animation-duration: 30s; animation-delay: 5s; }
-  .leaf:nth-child(3) { left: 50%; animation-duration: 22s; animation-delay: 2s; }
-  .leaf:nth-child(4) { left: 70%; animation-duration: 28s; animation-delay: 7s; }
-  .leaf:nth-child(5) { left: 85%; animation-duration: 20s; animation-delay: 1s; }
-
-  @keyframes floatUp {
-    0% {
-      transform: translateY(0) rotate(0deg);
-      opacity: 0.25;
+  <style>
+    /* ========== CSS VARIABLES & RESET ========== */
+    :root{
+      --bg-gray:  #888888;
+      --bg-start: #e6f2ea; /* light */
+      --accent-1: #2a7a2a; /* deep green */
+      --accent-2: #7ed957; /* lively */
+      --muted: #426b42;
+      --glass: rgba(255,255,255,0.85);
+      --glass-dark: rgba(10,20,10,0.55);
+      --max-width: 1200px;
+      --radius: 14px;
+      --ease: cubic-bezier(.2,.9,.2,1);
     }
-    50% {
-      opacity: 0.5;
-      transform: translateY(-40vh) rotate(20deg);
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins',system-ui,Segoe UI,-apple-system,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg-gray);
+      color:#0b3d0b;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      transition:background 800ms var(--ease), color 600ms var(--ease);
+      line-height:1.5;
     }
-    100% {
-      transform: translateY(-100vh) rotate(40deg);
-      opacity: 0;
+
+    /* Respect user motion preferences */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important}
     }
-  }
 
-  header {
-    text-align: center;
-    padding: 50px 20px;
-    background: rgba(0, 0, 0, 0.4);
-    animation: fadeIn 2s ease forwards;
-    user-select: none;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-
-  header h1 {
-    font-size: 3rem;
-    background: linear-gradient(90deg, #ffcc00, #ff6600, #00ccff, #00ff99);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: glow 3s infinite alternate;
-    user-select: text;
-  }
-
-  nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-  }
-
-  nav button {
-    background: transparent;
-    border: 2px solid #fff;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.4s ease;
-    user-select: none;
-  }
-
-  nav button:hover,
-  nav button:focus {
-    background: #fff;
-    color: #000;
-    transform: scale(1.1);
-    outline: none;
-  }
-
-  main {
-    max-width: 900px;
-    margin: 60px auto 80px;
-    padding: 0 20px;
-  }
-
-  section {
-    margin-bottom: 80px;
-    text-align: center;
-    line-height: 1.8;
-    font-size: 1.1rem;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease, transform 1s ease;
-  }
-
-  section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  section img {
-    max-width: 100%;
-    border-radius: 20px;
-    margin-top: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    transition: transform 0.5s ease;
-    will-change: transform;
-  }
-
-  section img:hover {
-    transform: scale(1.05);
-  }
-
-  /* Parallax container */
-  .parallax {
-    perspective: 1500px;
-  }
-
-  .parallax img {
-    transform-style: preserve-3d;
-    transition: transform 0.7s ease;
-  }
-
-  .parallax:hover img {
-    transform: translateZ(40px) scale(1.07);
-  }
-
-  footer {
-    text-align: center;
-    padding: 30px;
-    background: rgba(0, 0, 0, 0.4);
-    font-size: 0.9rem;
-    user-select: none;
-    border-radius: 0 0 10px 10px;
-  }
-
-  /* Animations */
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-
-  @keyframes glow {
-    0% {text-shadow: 0 0 10px #ff6600;}
-    100% {text-shadow: 0 0 30px #00ffcc;}
-  }
-
-  /* Scroll background transition handled by JS */
-
-  @media (max-width: 700px) {
-    header h1 {
-      font-size: 2.2rem;
+    /* ========== PRELOADER ========== */
+    .preloader{
+      position:fixed;inset:0;display:grid;place-items:center;background:#0b2f0b;z-index:9999;color:#fff
     }
-    nav button {
-      font-size: 0.9rem;
-      padding: 8px 14px;
+    .spinner{
+      width:90px;height:90px;border-radius:50%;background:conic-gradient(var(--accent-2),var(--accent-1));
+      box-shadow:0 10px 30px rgba(0,0,0,0.45);
+      animation:spin 2.4s linear infinite;
     }
-  }
-</style>
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* ========== LAYOUT ========== */
+    .site-wrap{max-width:var(--max-width);margin:0 auto;padding:28px}
+
+    header{
+      position:sticky;top:12px;background:linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));backdrop-filter: blur(6px);
+      margin:12px;border-radius:16px;padding:18px 20px;box-shadow:0 8px 30px rgba(10,40,20,0.12);
+      display:flex;gap:20px;align-items:center;justify-content:space-between;z-index:1000
+    }
+
+    /* Artistic title: SVG mask + layered glow */
+    .brand{
+      display:flex;flex-direction:column;gap:6px;align-items:flex-start
+    }
+    .site-title{
+      font-size:1.6rem;font-weight:800;letter-spacing:0.06em;margin:0;line-height:1;position:relative;
+      color:transparent;background:linear-gradient(90deg,var(--accent-2),#64c28a,#2a7a2a);
+      -webkit-background-clip:text;background-clip:text;text-transform:uppercase
+    }
+    .tagline{font-size:0.9rem;color:var(--muted);margin:0}
+
+    /* Nav: many buttons */
+    nav{display:flex;gap:8px;flex-wrap:wrap}
+    .nav-btn{
+      padding:10px 14px;border-radius:999px;border:2px solid transparent;background:linear-gradient(180deg,rgba(255,255,255,0.06),transparent);
+      cursor:pointer;font-weight:700;color:var(--accent-1);box-shadow:0 6px 18px rgba(38,112,38,0.12);transition:transform .28s var(--ease),box-shadow .28s var(--ease),background .28s var(--ease);
+    }
+    .nav-btn:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(34,122,34,0.14);background:linear-gradient(90deg,var(--accent-2),#c7f6d1)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin:28px 0}
+    .hero-card{background:var(--glass);padding:26px;border-radius:var(--radius);box-shadow:0 20px 50px rgba(30,80,30,0.09)}
+    .hero h1{font-size:2.2rem;margin:0 0 10px}
+    .hero p{margin:0;color:#2f4f4f}
+
+    /* Fancy CTA cluster (many buttons) */
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .cta{padding:12px 18px;border-radius:12px;border:0;font-weight:700;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+    .cta.primary{background:linear-gradient(90deg,var(--accent-1),#4fae4f);color:white;box-shadow:0 12px 30px rgba(33,133,33,0.28)}
+    .cta.ghost{background:transparent;border:2px solid rgba(42,122,42,0.12);color:var(--accent-1)}
+    .cta.alt{background:linear-gradient(90deg,#ffd66b,#ff8a5b);color:#2b2b2b}
+
+    /* Decorative pane: floating colorful stripes */
+    .stripes{position:relative;height:100%;min-height:260px;border-radius:12px;overflow:hidden}
+    .stripe{position:absolute;left:-10%;top:0;width:140%;height:100%;transform:skewY(-8deg);opacity:.14}
+    .s1{background:linear-gradient(90deg,#f6ffd9,#c9f3b7);top:-10%;animation:slide1 14s linear infinite}
+    .s2{background:linear-gradient(90deg,#c9f3b7,#9be9a2);top:10%;animation:slide2 18s linear infinite}
+    @keyframes slide1{0%{transform:translateX(-15%) skewY(-8deg)}50%{transform:translateX(15%) skewY(-8deg)}100%{transform:translateX(-15%) skewY(-8deg)}}
+    @keyframes slide2{0%{transform:translateX(20%) skewY(-8deg)}50%{transform:translateX(-10%) skewY(-8deg)}100%{transform:translateX(20%) skewY(-8deg)}}
+
+    /* Sections */
+    section{background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.96));margin:32px 0;padding:30px;border-radius:18px;box-shadow:0 12px 30px rgba(15,50,15,0.06);opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+    section.visible{opacity:1;transform:translateY(0)}
+    .section-grid{display:grid;grid-template-columns:1fr 380px;gap:22px;align-items:start}
+
+    /* Image card with parallax */
+    .img-card{border-radius:12px;overflow:hidden;box-shadow:0 18px 40px rgba(20,60,20,0.12)}
+    .img-card img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1);transition:transform .9s var(--ease)}
+    .img-card:hover img{transform:scale(1.06)}
+
+    /* Floating ornaments (SVG circles) */
+    .ornament{position:absolute;border-radius:50%;filter:blur(14px);opacity:.18;mix-blend-mode:screen}
+    .orn1{width:160px;height:160px;background:linear-gradient(90deg,#ff9a9e,#fecfef);left:-30px;top:40px}
+    .orn2{width:220px;height:220px;background:linear-gradient(90deg,#a8edea,#fed6e3);right:-40px;bottom:40px}
+
+    /* Utilities */
+    .muted{color:#476747}
+    .small{font-size:.95rem}
+    .center{text-align:center}
+
+    /* Footer */
+    footer{padding:22px;text-align:center;color:#1b3b1b}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .section-grid{grid-template-columns:1fr}
+      header{flex-direction:column;align-items:flex-start;gap:12px}
+      nav{justify-content:flex-start}
+    }
+
+  </style>
 </head>
 <body>
 
-  <!-- Floating leaves -->
-  <div class="leaf" aria-hidden="true"></div>
-  <div class="leaf" aria-hidden="true"></div>
-  <div class="leaf" aria-hidden="true"></div>
-  <div class="leaf" aria-hidden="true"></div>
-  <div class="leaf" aria-hidden="true"></div>
+  <!-- PRELOADER -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div style="text-align:center">
+      <div class="spinner" role="img" aria-label="Naglo-load..."></div>
+      <div style="margin-top:12px;font-weight:600;">Malugod na naglo-load — sandali lang...</div>
+    </div>
+  </div>
 
-  <header>
-    <h1>Kampanya para sa Malinis at Masayang Klima 🌎</h1>
-    <nav aria-label="Pangunahing menu ng site">
-      <button tabindex="1">Home</button>
-      <button tabindex="2">Tungkol sa Amin</button>
-      <button tabindex="3">Mga Proyekto</button>
-      <button tabindex="4">Sumali sa Amin</button>
-      <button tabindex="5">Makipag-ugnayan</button>
-    </nav>
-  </header>
+  <div class="site-wrap" id="site">
 
-  <main>
-    <section class="parallax" tabindex="0" aria-label="Panimula at Kalinisan ng Klima">
-      <p>
-        Ang ating klima ay parang puso — kailangang alagaan para patuloy na magbigay buhay at pag-asa.
-        Sa <strong>Cleaning Campaigns Philippines</strong>, naniniwala kami na bawat maliit na hakbang,
-        mula sa pag-pick up ng basura hanggang pagtatanim ng puno, ay may malaking epekto sa kinabukasan natin.
-      </p>
-      <img src="https://images.unsplash.com/photo-1523978591478-c753949ff840?auto=format&fit=crop&w=800&q=80" alt="Malinis na kalikasan at berde" />
+    <header role="banner">
+      <div class="brand">
+        <div class="site-title">Kalinisang Klima</div>
+        <div class="tagline small">Sama-sama. Maliit na hakbang. Malaking pagbabago.</div>
+      </div>
+
+      <nav role="navigation" aria-label="Pangunahing menu">
+        <button class="nav-btn" data-target="#home">Home</button>
+        <button class="nav-btn" data-target="#about">Tungkol</button>
+        <button class="nav-btn" data-target="#projects">Mga Proyekto</button>
+        <button class="nav-btn" data-target="#volunteer">Maging Volunteer</button>
+        <button class="nav-btn" data-target="#resources">Resources</button>
+        <button class="nav-btn" data-target="#contact">Makipag-ugnay</button>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="visible">
+      <div class="hero">
+        <div class="hero-card">
+          <h1>Maligayang pagdating!</h1>
+          <p class="muted">Salamat sa pagpunta dito — simpleng pahina pero may malaking puso. Kung naghahanap ka ng paraan para makatulong sa kalinisan at klima, nandito kami: may proyekto, may volunteer drives, at maraming maliit na ideya na madaling gawin sa bahay.</p>
+
+          <div class="cta-row">
+            <button class="cta primary" onclick="goto('#volunteer')">Sumali ka na</button>
+            <button class="cta alt" onclick="goto('#projects')">Tingnan ang Proyekto</button>
+            <button class="cta ghost" onclick="mailtoMe()">Mag-email sa Amin</button>
+            <button class="cta ghost" onclick="shareSite()">I-share</button>
+            <button class="cta ghost" onclick="downloadKit()">I-download ang Starter Kit</button>
+          </div>
+
+          <p class="small" style="margin-top:12px">Hindi mo kailangang perpekto — sapat na ang pagkilos. Kami ang bahala sa gabay, ikaw ang magdala ng puso.</p>
+        </div>
+
+        <div class="stripes">
+          <div class="stripe s1"></div>
+          <div class="stripe s2"></div>
+        </div>
+      </div>
     </section>
 
-    <section class="parallax" tabindex="0" aria-label="Mga Proyekto at Pagkilos">
-      <h2>🌿 Mga Proyekto Namin</h2>
-      <p>
-        Sa aming mga coastal clean-ups, tree-planting drives, at mga environmental workshops,
-        pinagsasama-sama namin ang mga Pilipino na may iisang layunin — gawing mas malinis at masigla ang ating kapaligiran.
-      </p>
-      <img src="https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=800&q=80" alt="Pagtatanim ng puno sa komunidad" />
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-grid">
+        <div>
+          <h2>Ano ang Kalinisang Klima?</h2>
+          <p class="muted">Simpleng sagot: sama-samang pag-aalaga sa kapaligiran. Hindi kami perpekto — pero regular, masipag, at masaya. Gumagawa kami ng coastal clean-ups, tree-planting, community talks, at simpleng household tips na madaling sundan.</p>
+
+          <ul>
+            <li>Makakakuha ka ng step-by-step na gabay sa cleanup</li>
+            <li>May ready-made checklist para sa tree-planting events</li>
+            <li>Mga printable na poster at social templates</li>
+          </ul>
+
+          <div style="margin-top:12px">
+            <button class="cta primary" onclick="goto('#resources')">I-download ang mga Resources</button>
+            <button class="cta ghost" onclick="goto('#projects')">Suriin ang Mga Proyekto</button>
+          </div>
+        </div>
+
+        <aside class="img-card" aria-hidden="true">
+          <img loading="lazy" alt="Mga volunteer na nagtatanim ng puno" src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80">
+        </aside>
+      </div>
     </section>
-  </main>
 
-  <footer>
-    © 2025 CleaningCampaigns.com.ph | Sama-sama para sa Kalinisan ng Klima
-  </footer>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-grid">
+        <div>
+          <h2>Mga Proyektong Pwedeng Salihan</h2>
+          <p class="muted">May proyekto sa malapit sa iyo — o kung wala, gumawa tayo ng sarili mong maliit na kampanya. Narito ang ilan sa mga regular naming ginagawa:</p>
 
-<script>
-  // Scroll-trigger fade in for sections
-  function revealOnScroll() {
-    const sections = document.querySelectorAll('section');
-    const triggerBottom = window.innerHeight * 0.85;
+          <ol>
+            <li>Coastal & River Clean-ups</li>
+            <li>Tree-planting at Urban Greening</li>
+            <li>Zero-waste Workshops para sa mga Barangay</li>
+            <li>School Outreach at Youth Programs</li>
+          </ol>
 
-    sections.forEach(section => {
-      const top = section.getBoundingClientRect().top;
-      if (top < triggerBottom) {
-        section.classList.add('visible');
-      }
+          <div style="margin-top:12px" class="cta-row">
+            <button class="cta primary" onclick="alert('Magre-register ka ng volunteer form — demo only')">Mag-register bilang Volunteer</button>
+            <button class="cta alt" onclick="alert('I-schedule natin ang isang orientation — demo only')">Mag-request ng Orientation</button>
+            <button class="cta ghost" onclick="goto('#contact')">Makipag-ugnayan</button>
+          </div>
+        </div>
+
+        <aside class="img-card">
+          <img loading="lazy" alt="Volunteers cleaning a beach" src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80">
+        </aside>
+      </div>
+    </section>
+
+    <!-- VOLUNTEER -->
+    <section id="volunteer">
+      <div>
+        <h2>Maging Volunteer</h2>
+        <p class="muted">Gusto naming makilala ka. Hindi mahalaga ang edad o background — mahalaga ang puso. Narito ang mga simpleng hakbang para makasali:</p>
+        <ol>
+          <li>Mag-fill ng form (quick)</li>
+          <li>Attend ng orientation (online o face-to-face)</li>
+          <li>Pumili ng proyekto at mag-sign up</li>
+        </ol>
+
+        <div style="margin-top:14px" class="cta-row">
+          <button class="cta primary" onclick="alert('Magpapakita ang form dito — demo')">Mag-fill ng Volunteer Form</button>
+          <button class="cta ghost" onclick="alert('Makakatanggap ka ng welcome email — demo')">Kumuha ng Welcome Kit</button>
+          <button class="cta alt" onclick="goto('#projects')">Hanapin ang Project Near You</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section id="resources">
+      <h2>Mga Libreng Resources</h2>
+      <p class="muted">Mga printable, social media kits, at step-by-step guides na pwede mong gamitin sa community mo.</p>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:12px">
+        <button class="nav-btn" onclick="download('checklist.pdf')">Cleanup Checklist</button>
+        <button class="nav-btn" onclick="download('poster.zip')">Poster Pack</button>
+        <button class="nav-btn" onclick="download('starter-kit.pdf')">Starter Kit</button>
+        <button class="nav-btn" onclick="download('social-templates.zip')">Social Templates</button>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-grid">
+        <div>
+          <h2>Makipag-ugnayan</h2>
+          <p class="muted">Gustong makipag-usap? Sabihin mo lang — bukas kami para sa tanong, suhestiyon, o simpleng kwentuhan tungkol sa pag-aalaga ng mundo.</p>
+
+          <p><strong>Email:</strong> <a href="mailto:info@cleaningcampaigns.com.ph">info@cleaningcampaigns.com.ph</a></p>
+          <p><strong>Facebook:</strong> <a href="#">facebook.com/cleaningcampaigns</a> | <strong>Instagram:</strong> <a href="#">@cleaningcampaigns</a></p>
+
+          <div style="margin-top:12px" class="cta-row">
+            <button class="cta primary" onclick="mailtoMe()">Mag-email agad</button>
+            <button class="cta ghost" onclick="shareSite()">I-share ang Page</button>
+            <button class="cta alt" onclick="alert('Kita-kits sa susunod na event!')">Tingnan ang Event Calendar</button>
+          </div>
+        </div>
+
+        <aside class="img-card">
+          <img loading="lazy" alt="Community meeting" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=80">
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <div class="center small">© 2025 Kalinisang Klima • Ginawa nang may malasakit at konting saya.</div>
+    </footer>
+
+    <!-- Decorative ornaments -->
+    <div class="ornament orn1" aria-hidden="true"></div>
+    <div class="ornament orn2" aria-hidden="true"></div>
+
+  </div><!-- .site-wrap -->
+
+  <script>
+    // ========== Helpers ==========
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+    // Preloader
+    window.addEventListener('load', ()=>{
+      const pre = document.getElementById('preloader');
+      setTimeout(()=>{pre.style.opacity=0;pre.style.pointerEvents='none';pre.style.transition='opacity 600ms ease';},650);
+      setTimeout(()=>pre.remove(),1500);
     });
-  }
 
-  window.addEventListener('scroll', () => {
-    revealOnScroll();
+    // Smooth goto
+    function goto(hash){
+      const el = document.querySelector(hash);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
 
-    // Background color change on scroll (gray to colorful)
-    let scrollPos = window.scrollY;
-    let maxScroll = document.body.scrollHeight - window.innerHeight;
-    let scrollPercent = scrollPos / maxScroll;
+    // Mailto helper
+    function mailtoMe(){
+      window.location.href = 'mailto:info@cleaningcampaigns.com.ph?subject=Gusto%20kong%20sumali%20sa%20Kalinisang%20Klima&body=Kumusta!%0D%0A%0D%0ANais%20kong%20makilahok%20sa%20inyong%20mga%20proyekto.%20Paki-send%20ang%20mga%20detalye.%0D%0A%0D%0AMaraming%20salamat.';
+    }
 
-    // From gray (136) to light greenish (200, 255, 220)
-    let r = Math.floor(136 + (200 - 136) * scrollPercent);
-    let g = Math.floor(136 + (255 - 136) * scrollPercent);
-    let b = Math.floor(136 + (220 - 136) * scrollPercent);
+    // Demo share
+    function shareSite(){
+      const shareData = {title:document.title,text:'Tingnan ang Kalinisang Klima — sama-sama tayo para sa malinis na mundo',url:location.href};
+      if(navigator.share){
+        navigator.share(shareData).catch(()=>alert('Share cancelled'));
+      }else{
+        navigator.clipboard.writeText(location.href).then(()=>alert('Link copied! I-paste mo kung saan mo gustong i-share.'))
+      }
+    }
 
-    document.body.style.backgroundColor = `rgb(${r},${g},${b})`;
+    // Fake download (demo) — in real hosting you'd link real files
+    function download(file){
+      alert('I-download: '+file+' (demo). Kapag naka-host, automatic itong mada-download.');
+    }
 
-    // Text color switch (white to dark green)
-    if(scrollPercent > 0.5) {
-      document.body.style.color = '#0b3d0b';
-      // update nav buttons color
-      document.querySelectorAll('nav button').forEach(btn => {
-        btn.style.borderColor = '#0b3d0b';
-        btn.style.color = '#0b3d0b';
+    // Nav buttons behavior
+    $$('.nav-btn').forEach(btn=>{
+      btn.addEventListener('click', e=>{
+        const t = btn.getAttribute('data-target');
+        if(t) goto(t);
+        btn.classList.add('active');
+        setTimeout(()=>btn.classList.remove('active'),600);
+      })
+    })
+
+    // Scroll-trigger reveal & background color transition (gray -> colorful)
+    const sections = Array.from(document.querySelectorAll('section'));
+    function reveal(){
+      const bottom = window.innerHeight * 0.82;
+      sections.forEach(sec=>{
+        const r = sec.getBoundingClientRect();
+        if(r.top < bottom) sec.classList.add('visible');
       });
-    } else {
-      document.body.style.color = '#fff';
-      document.querySelectorAll('nav button').forEach(btn => {
-        btn.style.borderColor = '#fff';
-        btn.style.color = '#fff';
+
+      // background color interpolation
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const pct = Math.min(1, window.scrollY / (maxScroll || 1));
+
+      // interpolate from gray(136,136,136) to colorful light greens
+      const r0=136,g0=136,b0=136;
+      const r1=230,g1=242,b1=234; // soft greenish
+      const rC = Math.round(r0 + (r1-r0)*pct);
+      const gC = Math.round(g0 + (g1-g0)*pct);
+      const bC = Math.round(b0 + (b1-b0)*pct);
+      document.body.style.background = `rgb(${rC},${gC},${bC})`;
+
+      // text color swap
+      if(pct>0.45){ document.body.style.color = '#08320b'; } else { document.body.style.color = '#0b3d0b'; }
+
+      // tweak nav buttons color for contrast
+      $$('.nav-btn').forEach(nb=>{
+        if(pct>0.45){ nb.style.color = '#06400a'; nb.style.borderColor = 'rgba(6,64,10,0.06)'; }
+        else { nb.style.color = 'var(--accent-1)'; nb.style.borderColor = 'transparent'; }
       });
     }
-  });
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('resize', reveal);
+    reveal();
 
-  // Initial call for reveal on load
-  revealOnScroll();
-</script>
+    // Accessibility: keyboard shortcuts for quick nav (H, A, P, V, R, C)
+    window.addEventListener('keydown', (e)=>{
+      if(e.altKey || e.ctrlKey || e.metaKey) return;
+      const map = {h:'#home',a:'#about',p:'#projects',v:'#volunteer',r:'#resources',c:'#contact'};
+      const target = map[e.key?.toLowerCase()];
+      if(target) goto(target);
+    });
 
+    // Small UX: show tooltip if user stays idle on hero CTA
+    let idleTimer;
+    function startIdle(){idleTimer=setTimeout(()=>{alert('Tip: Pwede kang mag-download ng starter kit para simulan ang cleanup sa inyong barangay.')},12000)}
+    function resetIdle(){clearTimeout(idleTimer);startIdle()}
+    ['mousemove','keydown','scroll','touchstart'].forEach(evt=>window.addEventListener(evt,resetIdle));
+    startIdle();
+
+  </script>
 </body>
 </html>
+
