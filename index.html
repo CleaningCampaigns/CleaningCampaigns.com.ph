@@ -240,24 +240,63 @@
       </div>
     </section>
 
-    <!-- VOLUNTEER -->
-    <section id="volunteer">
-      <div>
-        <h2>Maging Volunteer</h2>
-        <p class="muted">Gusto naming makilala ka. Hindi mahalaga ang edad o background — mahalaga ang puso. Narito ang mga simpleng hakbang para makasali:</p>
-        <ol>
-          <li>Mag-fill ng form (quick)</li>
-          <li>Attend ng orientation (online o face-to-face)</li>
-          <li>Pumili ng proyekto at mag-sign up</li>
-        </ol>
+<!-- VOLUNTEER -->
+<section id="volunteer">
+  <div>
+    <h2>Maging Volunteer</h2>
+    <p class="muted">
+      Gusto naming makilala ka. Hindi mahalaga ang edad o background — mahalaga ang puso. Narito ang mga simpleng hakbang para makasali:
+    </p>
+    <ol>
+      <li>Mag-fill ng form (quick)</li>
+      <li>Attend ng orientation (online o face-to-face)</li>
+      <li>Pumili ng proyekto at mag-sign up</li>
+    </ol>
 
-        <div style="margin-top:14px" class="cta-row">
-          <button class="cta primary" onclick="alert('Magpapakita ang form dito — demo')">Mag-fill ng Volunteer Form</button>
-          <button class="cta ghost" onclick="alert('Makakatanggap ka ng welcome email — demo')">Kumuha ng Welcome Kit</button>
-          <button class="cta alt" onclick="goto('#projects')">Hanapin ang Project Near You</button>
-        </div>
-      </div>
-    </section>
+    <div style="margin-top:14px" class="cta-row">
+      <button class="cta primary" onclick="document.getElementById('volunteerFormContainer').style.display='block'">
+        Mag-fill ng Volunteer Form
+      </button>
+      <button class="cta ghost" onclick="alert('Makakatanggap ka ng welcome email — demo')">
+        Kumuha ng Welcome Kit
+      </button>
+      <button class="cta alt" onclick="goto('#projects')">
+        Hanapin ang Project Near You
+      </button>
+    </div>
+
+    <!-- Volunteer Form (hidden by default) -->
+    <div id="volunteerFormContainer" style="display:none; margin-top:20px;">
+      <form id="volunteerForm">
+        <label for="vname">Pangalan:</label>
+        <input type="text" id="vname" name="vname" placeholder="Buong Pangalan" required>
+
+        <label for="vemail">Email:</label>
+        <input type="email" id="vemail" name="vemail" placeholder="halimbawa: juan@email.com" required>
+
+        <label for="vcontact">Numero ng Telepono:</label>
+        <input type="tel" id="vcontact" name="vcontact" placeholder="09XXXXXXXXX" required pattern="[0-9]{11}">
+
+        <label for="vskills">Kasanayan o Interes:</label>
+        <textarea id="vskills" name="vskills" placeholder="Ilagay ang iyong kasanayan o interes sa pag-volunteer..." required></textarea>
+
+        <button type="submit" class="cta primary">Sumali bilang Volunteer</button>
+      </form>
+      <p id="volunteerMessage" style="display:none; color:green; margin-top:10px;">
+        ✅ Salamat sa pagsali! Makikipag-ugnayan kami sa iyo sa lalong madaling panahon.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+document.getElementById("volunteerForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  document.getElementById("volunteerMessage").style.display = "block";
+  document.getElementById("volunteerForm").style.display = "none";
+});
+</script>
+
 
     <!-- RESOURCES -->
     <section id="resources">
@@ -424,6 +463,7 @@
 </p>
 </body>
 </html>
+
 
 
 
