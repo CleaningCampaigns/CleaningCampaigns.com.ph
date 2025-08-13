@@ -163,107 +163,215 @@
       </nav>
     </header>
 
-    <!-- HERO -->
-    <section id="home" class="visible">
-      <div class="hero">
-        <div class="hero-card">
-          <h1>Maligayang pagdating!</h1>
-          <p class="muted">Salamat sa pagpunta dito — simpleng pahina pero may malaking puso. Kung naghahanap ka ng paraan para makatulong sa kalinisan at klima, nandito kami: may proyekto, may volunteer drives, at maraming maliit na ideya na madaling gawin sa bahay.</p>
+   <!-- HERO -->
+<section id="home" class="visible">
+  <div class="hero">
+    <div class="hero-card">
+      <h1>Maligayang pagdating!</h1>
+      <p class="muted">
+        Salamat sa pagpunta dito — simpleng pahina pero may malaking puso. Kung naghahanap ka ng paraan para makatulong sa kalinisan at klima, nandito kami: may proyekto, may volunteer drives, at maraming maliit na ideya na madaling gawin sa bahay.
+      </p>
 
-          <div class="cta-row">
-            <button class="cta primary" onclick="goto('#volunteer')">Sumali ka na</button>
-            <button class="cta alt" onclick="goto('#projects')">Tingnan ang Proyekto</button>
-            <button class="cta ghost" onclick="mailtoMe()">Mag-email sa Amin</button>
-            <button class="cta ghost" onclick="shareSite()">I-share</button>
-            <button class="cta ghost" onclick="downloadKit()">I-download ang Starter Kit</button>
-          </div>
-
-          <p class="small" style="margin-top:12px">Hindi mo kailangang perpekto — sapat na ang pagkilos. Kami ang bahala sa gabay, ikaw ang magdala ng puso.</p>
-        </div>
-
-        <div class="stripes">
-          <div class="stripe s1"></div>
-          <div class="stripe s2"></div>
-        </div>
+      <div class="cta-row">
+        <button class="cta primary" onclick="document.querySelector('#volunteer').scrollIntoView({behavior:'smooth'})">
+          Sumali ka na
+        </button>
+        <button class="cta alt" onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})">
+          Tingnan ang Proyekto
+        </button>
+        <button class="cta ghost" onclick="mailtoMe()">Mag-email sa Amin</button>
+        <button class="cta ghost" onclick="shareSite()">I-share</button>
+        <button class="cta ghost" onclick="downloadKit()">I-download ang Starter Kit</button>
       </div>
-    </section>
 
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="section-grid">
-        <div>
-          <h2>Ano ang Kalinisang Klima?</h2>
-          <p class="muted">Simpleng sagot: sama-samang pag-aalaga sa kapaligiran. Hindi kami perpekto — pero regular, masipag, at masaya. Gumagawa kami ng coastal clean-ups, tree-planting, community talks, at simpleng household tips na madaling sundan.</p>
-
-          <ul>
-            <li>Makakakuha ka ng step-by-step na gabay sa cleanup</li>
-            <li>May ready-made checklist para sa tree-planting events</li>
-            <li>Mga printable na poster at social templates</li>
-          </ul>
-
-          <div style="margin-top:12px">
-            <button class="cta primary" onclick="goto('#resources')">I-download ang mga Resources</button>
-            <button class="cta ghost" onclick="goto('#projects')">Suriin ang Mga Proyekto</button>
-          </div>
-        </div>
-
-        <aside class="img-card" aria-hidden="true">
-          <img loading="lazy" alt="Mga volunteer na nagtatanim ng puno" src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80">
-        </aside>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div class="section-grid">
-        <div>
-          <h2>Mga Proyektong Pwedeng Salihan</h2>
-          <p class="muted">May proyekto sa malapit sa iyo — o kung wala, gumawa tayo ng sarili mong maliit na kampanya. Narito ang ilan sa mga regular naming ginagawa:</p>
-
-          <ol>
-            <li>Coastal & River Clean-ups</li>
-            <li>Tree-planting at Urban Greening</li>
-            <li>Zero-waste Workshops para sa mga Barangay</li>
-            <li>School Outreach at Youth Programs</li>
-          </ol>
-
-          <div style="margin-top:12px" class="cta-row">
-            <button class="cta primary" onclick="alert('Magre-register ka ng volunteer form — demo only')">Mag-register bilang Volunteer</button>
-            <button class="cta alt" onclick="alert('I-schedule natin ang isang orientation — demo only')">Mag-request ng Orientation</button>
-            <button class="cta ghost" onclick="goto('#contact')">Makipag-ugnayan</button>
-          </div>
-        </div>
-
-        <aside class="img-card">
-          <img loading="lazy" alt="Volunteers cleaning a beach" src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80">
-        </aside>
-      </div>
-    </section>
-
-<!-- VOLUNTEER -->
-<section id="volunteer">
-  <div>
-    <h2>Maging Volunteer</h2>
-    <p class="muted">
-      Gusto naming makilala ka. Hindi mahalaga ang edad o background — mahalaga ang puso. Narito ang mga simpleng hakbang para makasali:
-    </p>
-    <ol>
-      <li>Mag-fill ng form (quick)</li>
-      <li>Attend ng orientation (online o face-to-face)</li>
-      <li>Pumili ng proyekto at mag-sign up</li>
-    </ol>
-
-    <div style="margin-top:14px" class="cta-row">
-      <button class="cta primary" onclick="document.getElementById('volunteerFormContainer').style.display='block'">
-        Mag-fill ng Volunteer Form
-      </button>
-      <button class="cta ghost" onclick="alert('Makakatanggap ka ng welcome email — demo')">
-        Kumuha ng Welcome Kit
-      </button>
-      <button class="cta alt" onclick="goto('#projects')">
-        Hanapin ang Project Near You
-      </button>
+      <p class="small" style="margin-top:12px">
+        Hindi mo kailangang perpekto — sapat na ang pagkilos. Kami ang bahala sa gabay, ikaw ang magdala ng puso.
+      </p>
     </div>
+
+    <div class="stripes">
+      <div class="stripe s1"></div>
+      <div class="stripe s2"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+function mailtoMe() {
+  window.location.href = "mailto:ecosage@example.com?subject=Interesado%20Ako%20Mag-Volunteer&body=Kumusta%20EcoSage%20Team%2C%0A%0AInteresado%20po%20akong%20sumali%20bilang%20volunteer.%0A%0APangalan%3A%20%0AContact%20Number%3A%20%0A";
+}
+
+function shareSite() {
+  if (navigator.share) {
+    navigator.share({
+      title: "EcoSage - Kalinisang Klima",
+      text: "Tingnan ang mga proyekto ng EcoSage para sa kalinisan at klima!",
+      url: window.location.href
+    }).catch(console.error);
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      alert("✅ Link na-copy sa clipboard!");
+    });
+  }
+}
+
+function downloadKit() {
+  // Palitan ng totoong file link
+  const link = document.createElement('a');
+  link.href = "files/starter-kit.pdf";
+  link.download = "EcoSage_Starter_Kit.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+</script>
+
+
+ <!-- ABOUT -->
+<section id="about">
+  <div class="section-grid">
+    <div>
+      <h2>Ano ang Kalinisang Klima?</h2>
+      <p class="muted">
+        Simpleng sagot: sama-samang pag-aalaga sa kapaligiran. Hindi kami perpekto — pero regular, masipag, at masaya. Gumagawa kami ng coastal clean-ups, tree-planting, community talks, at simpleng household tips na madaling sundan.
+      </p>
+
+      <ul>
+        <li><button class="link-btn" onclick="toggleGuide('cleanupGuide')">📄 Step-by-step na gabay sa cleanup</button></li>
+        <li><button class="link-btn" onclick="toggleGuide('treeGuide')">🌳 Ready-made checklist para sa tree-planting</button></li>
+        <li><button class="link-btn" onclick="toggleGuide('posterGuide')">🖼 Printable na poster at social templates</button></li>
+      </ul>
+
+      <!-- Hidden Guides -->
+      <div id="cleanupGuide" class="guide" style="display:none;">
+        <p><strong>Cleanup Guide:</strong> Maghanda ng gloves, trash bags, at segregated bins. Siguraduhin ang safety gear bago magsimula.</p>
+        <a href="files/cleanup-guide.pdf" download>⬇ I-download PDF</a>
+      </div>
+
+      <div id="treeGuide" class="guide" style="display:none;">
+        <p><strong>Tree-Planting Checklist:</strong> Pumili ng tamang puno para sa lugar, magdala ng pala, tubig, at compost.</p>
+        <a href="files/tree-planting-checklist.pdf" download>⬇ I-download PDF</a>
+      </div>
+
+      <div id="posterGuide" class="guide" style="display:none;">
+        <p><strong>Posters & Templates:</strong> Gumamit ng ready-to-print na designs para mas madali ang pag-promote.</p>
+        <a href="files/posters.zip" download>⬇ I-download ZIP</a>
+      </div>
+
+      <div style="margin-top:12px">
+        <button class="cta primary" onclick="document.querySelector('#resources').scrollIntoView({behavior:'smooth'})">
+          I-download ang mga Resources
+        </button>
+        <button class="cta ghost" onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})">
+          Suriin ang Mga Proyekto
+        </button>
+      </div>
+    </div>
+
+    <aside class="img-card" aria-hidden="true">
+      <img loading="lazy" alt="Mga volunteer na nagtatanim ng puno" src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80">
+    </aside>
+  </div>
+</section>
+
+<script>
+function toggleGuide(id) {
+  const guide = document.getElementById(id);
+  guide.style.display = guide.style.display === "none" ? "block" : "none";
+}
+</script>
+
+
+ <!-- PROJECTS -->
+<section id="projects">
+  <div class="section-grid">
+    <div>
+      <h2>Mga Proyektong Pwedeng Salihan</h2>
+      <p class="muted">
+        May proyekto sa malapit sa iyo — o kung wala, gumawa tayo ng sarili mong maliit na kampanya. Narito ang ilan sa mga regular naming ginagawa:
+      </p>
+
+      <!-- Search / Filter -->
+      <input type="text" id="projectSearch" placeholder="🔍 Hanapin ang proyekto..." style="width:100%; padding:8px; border-radius:6px; margin-bottom:10px;">
+
+      <ul id="projectList">
+        <li>Coastal & River Clean-ups</li>
+        <li>Tree-planting at Urban Greening</li>
+        <li>Zero-waste Workshops para sa mga Barangay</li>
+        <li>School Outreach at Youth Programs</li>
+        <li>Community Organic Gardening</li>
+        <li>Plastic-Free Market Campaign</li>
+      </ul>
+
+      <div style="margin-top:12px" class="cta-row">
+        <!-- Mag-register bilang Volunteer -->
+        <button class="cta primary" onclick="toggleVolunteerForm()">Mag-register bilang Volunteer</button>
+        
+        <!-- Mag-request ng Orientation -->
+        <button class="cta alt" onclick="toggleOrientationForm()">Mag-request ng Orientation</button>
+        
+        <!-- Makipag-ugnayan -->
+        <button class="cta ghost" onclick="document.querySelector('#contact').scrollIntoView({behavior: 'smooth'})">
+          Makipag-ugnayan
+        </button>
+      </div>
+
+      <!-- Orientation Form -->
+      <div id="orientationFormContainer" style="display:none; margin-top:15px;">
+        <form id="orientationForm">
+          <label for="oname">Pangalan:</label>
+          <input type="text" id="oname" name="oname" placeholder="Buong Pangalan" required>
+
+          <label for="oemail">Email:</label>
+          <input type="email" id="oemail" name="oemail" placeholder="halimbawa: juan@email.com" required>
+
+          <label for="osched">Pumili ng Schedule:</label>
+          <select id="osched" name="osched" required>
+            <option value="">--Pumili--</option>
+            <option>August 20, 2025 - Online</option>
+            <option>August 25, 2025 - Face-to-Face</option>
+            <option>September 1, 2025 - Online</option>
+          </select>
+
+          <button type="submit" class="cta primary">I-submit Request</button>
+        </form>
+        <p id="orientationMessage" style="display:none; color:green; margin-top:10px;">
+          ✅ Salamat! Na-receive namin ang iyong request para sa orientation.
+        </p>
+      </div>
+    </div>
+
+    <aside class="img-card">
+      <img loading="lazy" alt="Volunteers cleaning a beach" src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80">
+    </aside>
+  </div>
+</section>
+
+<script>
+// Search Filter
+document.getElementById("projectSearch").addEventListener("input", function() {
+  let filter = this.value.toLowerCase();
+  let items = document.querySelectorAll("#projectList li");
+  items.forEach(item => {
+    item.style.display = item.textContent.toLowerCase().includes(filter) ? "" : "none";
+  });
+});
+
+// Toggle Orientation Form
+function toggleOrientationForm() {
+  const form = document.getElementById("orientationFormContainer");
+  form.style.display = form.style.display === "none" ? "block" : "none";
+}
+
+// Orientation Form Submission
+document.getElementById("orientationForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  document.getElementById("orientationMessage").style.display = "block";
+  document.getElementById("orientationForm").style.display = "none";
+});
+</script>
+
+
 
 <!-- VOLUNTEER -->
 <section id="volunteer">
@@ -521,6 +629,7 @@ document.getElementById("volunteerForm").addEventListener("submit", function(eve
 </p>
 </body>
 </html>
+
 
 
 
