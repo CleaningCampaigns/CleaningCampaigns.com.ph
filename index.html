@@ -265,7 +265,31 @@
       </button>
     </div>
 
-    <!-- Volunteer Form (hidden by default) -->
+<!-- VOLUNTEER -->
+<section id="volunteer">
+  <div>
+    <h2>Maging Volunteer</h2>
+    <p class="muted">
+      Gusto naming makilala ka. Hindi mahalaga ang edad o background — mahalaga ang puso. Narito ang mga simpleng hakbang para makasali:
+    </p>
+    <ol>
+      <li>Mag-fill ng form (quick)</li>
+      <li>Attend ng orientation (online o face-to-face)</li>
+      <li>Pumili ng proyekto at mag-sign up</li>
+    </ol>
+
+    <div style="margin-top:14px" class="cta-row">
+      <!-- Mag-fill ng Volunteer Form -->
+      <button class="cta primary" onclick="toggleVolunteerForm()">Mag-fill ng Volunteer Form</button>
+      
+      <!-- Kumuha ng Welcome Kit -->
+      <button class="cta ghost" onclick="showWelcomeKit()">Kumuha ng Welcome Kit</button>
+      
+      <!-- Hanapin ang Project Near You -->
+      <button class="cta alt" onclick="showProjects()">Hanapin ang Project Near You</button>
+    </div>
+
+    <!-- Volunteer Form -->
     <div id="volunteerFormContainer" style="display:none; margin-top:20px;">
       <form id="volunteerForm">
         <label for="vname">Pangalan:</label>
@@ -286,8 +310,42 @@
         ✅ Salamat sa pagsali! Makikipag-ugnayan kami sa iyo sa lalong madaling panahon.
       </p>
     </div>
+
+    <!-- Welcome Kit Modal -->
+    <div id="welcomeKitModal" style="display:none; padding:20px; background:white; border:1px solid #ccc; border-radius:10px; max-width:400px; margin:20px auto;">
+      <h3>📦 Welcome Kit</h3>
+      <p>Salamat sa interes! Pwede mong i-download ang welcome kit sa ibaba:</p>
+      <a href="welcome-kit.pdf" download class="cta primary">⬇ Download PDF</a>
+      <button onclick="closeWelcomeKit()" class="cta alt" style="margin-top:10px;">Isara</button>
+    </div>
   </div>
 </section>
+
+<script>
+function toggleVolunteerForm() {
+  const form = document.getElementById('volunteerFormContainer');
+  form.style.display = form.style.display === 'none' ? 'block' : 'none';
+}
+
+function showWelcomeKit() {
+  document.getElementById('welcomeKitModal').style.display = 'block';
+}
+
+function closeWelcomeKit() {
+  document.getElementById('welcomeKitModal').style.display = 'none';
+}
+
+function showProjects() {
+  alert('Magpapakita dito ng list ng projects malapit sa iyo — demo.');
+}
+
+// Volunteer Form Submission
+document.getElementById("volunteerForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  document.getElementById("volunteerMessage").style.display = "block";
+  document.getElementById("volunteerForm").style.display = "none";
+});
+</script>
 
 <script>
 document.getElementById("volunteerForm").addEventListener("submit", function(event) {
@@ -463,6 +521,7 @@ document.getElementById("volunteerForm").addEventListener("submit", function(eve
 </p>
 </body>
 </html>
+
 
 
 
