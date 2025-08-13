@@ -477,28 +477,75 @@ document.getElementById("volunteerForm").addEventListener("submit", function(eve
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="section-grid">
-        <div>
-          <h2>Makipag-ugnayan</h2>
-          <p class="muted">Gustong makipag-usap? Sabihin mo lang — bukas kami para sa tanong, suhestiyon, o simpleng kwentuhan tungkol sa pag-aalaga ng mundo.</p>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-grid">
+    <div>
+      <h2>Makipag-ugnayan</h2>
+      <p class="muted">Gustong makipag-usap? Sabihin mo lang — bukas kami para sa tanong, suhestiyon, o simpleng kwentuhan tungkol sa pag-aalaga ng mundo.</p>
 
-          <p><strong>Email:</strong> <a href="mailto:cleaning.campaigns.ph@gmail.com">cleaning.campaigns.ph@gmail.com</a></p>
-          <p><strong>Facebook:</strong> <a href="#">facebook.com/cleaningcampaigns</a> | <strong>Instagram:</strong> <a href="#">@cleaningcampaigns</a></p>
+      <p><strong>Email:</strong> <a href="mailto:cleaning.campaigns.ph@gmail.com">cleaning.campaigns.ph@gmail.com</a></p>
+      <p><strong>Facebook:</strong> <a href="#">facebook.com/cleaningcampaigns</a> | 
+         <strong>Instagram:</strong> <a href="#">@cleaningcampaigns</a></p>
 
-          <div style="margin-top:12px" class="cta-row">
-            <button class="cta primary" onclick="mailtoMe()">Mag-email agad</button>
-            <button class="cta ghost" onclick="shareSite()">I-share ang Page</button>
-            <button class="cta alt" onclick="alert('Kita-kits sa susunod na event!')">Tingnan ang Event Calendar</button>
-          </div>
-        </div>
-
-        <aside class="img-card">
-          <img loading="lazy" alt="Community meeting" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=80">
-        </aside>
+      <div style="margin-top:12px" class="cta-row">
+        <button class="cta primary" onclick="mailtoMe()">Mag-email agad</button>
+        <button class="cta ghost" onclick="shareSite()">I-share ang Page</button>
+        <button class="cta alt" onclick="openEvents()">Tingnan ang Event Calendar</button>
       </div>
-    </section>
+    </div>
+
+    <aside class="img-card">
+      <img loading="lazy" alt="Community meeting" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=80">
+    </aside>
+  </div>
+</section>
+
+<!-- Event Calendar Modal -->
+<div id="eventModal" style="display:none; padding:20px; background:white; border:1px solid #ccc; border-radius:10px; max-width:600px; margin:20px auto;">
+  <h3>📅 Event Calendar</h3>
+  <ul style="max-height:300px; overflow-y:auto; list-style:none; padding:0;">
+    <li><strong>Enero 2025:</strong> Tree Planting sa <a href="https://maps.google.com/?q=NCR" target="_blank">buong NCR</a></li>
+    <li><strong>Marso 2025:</strong> Coastal Cleanup sa <a href="https://maps.google.com/?q=Batangas" target="_blank">Batangas</a></li>
+    <li><strong>Mayo 2025:</strong> Zero Waste Workshop sa <a href="https://maps.google.com/?q=Caloocan+City" target="_blank">Caloocan City</a></li>
+    <li><strong>Agosto 2025:</strong> River Cleanup sa <a href="https://maps.google.com/?q=Pampanga" target="_blank">Pampanga</a></li>
+    <li><strong>Oktubre 2025:</strong> Climate Awareness Run sa <a href="https://maps.google.com/?q=Cebu" target="_blank">Cebu</a></li>
+    <li><strong>Disyembre 2025:</strong> Holiday Eco Bazaar sa <a href="https://maps.google.com/?q=Davao" target="_blank">Davao</a></li>
+    <li><strong>Pebrero 2026:</strong> Green Schools Project Launch sa <a href="https://maps.google.com/?q=Iloilo" target="_blank">Iloilo</a></li>
+    <li><strong>Abril 2026:</strong> Mangrove Planting sa <a href="https://maps.google.com/?q=Palawan" target="_blank">Palawan</a></li>
+    <li><strong>Hunyo 2026:</strong> Plastic-Free Challenge Nationwide (<a href="https://maps.google.com/?q=Philippines" target="_blank">Pilipinas</a>)</li>
+    <li><strong>Setyembre 2026:</strong> Barangay Composting Drive sa <a href="https://maps.google.com/?q=Caloocan+City" target="_blank">Caloocan City</a></li>
+    <li><strong>Nobyembre 2026:</strong> Community Solar Workshop Nationwide <a href="https://maps.google.com/?q=Philippines" target="_blank">Pilipinas</a></li>
+  </ul>
+  <button onclick="closeEvents()" class="cta alt" style="margin-top:10px;">Isara</button>
+</div>
+
+<script>
+function mailtoMe() {
+  window.location.href = "mailto:cleaning.campaigns.ph@gmail.com?subject=Kumusta!&body=Magandang araw!";
+}
+
+function shareSite() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Kalinisang Klima',
+      text: 'Tingnan mo itong environmental campaign!',
+      url: window.location.href
+    }).catch(console.error);
+  } else {
+    alert('I-copy mo na lang ang link: ' + window.location.href);
+  }
+}
+
+function openEvents() {
+  document.getElementById('eventModal').style.display = 'block';
+}
+
+function closeEvents() {
+  document.getElementById('eventModal').style.display = 'none';
+}
+</script>
+
 
      <footer>
   <div class="center small">
@@ -629,6 +676,7 @@ document.getElementById("volunteerForm").addEventListener("submit", function(eve
 </p>
 </body>
 </html>
+
 
 
 
